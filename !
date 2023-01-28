@@ -1,0 +1,11 @@
+public void ban(Player p) {
+        db.add(p.getAddress().toString());  //  DB would be whatever you are using to store the IP's.  I recommend redis as a key-value store.
+}
+
+@EventHandler
+public void (PlayerJoinEvent e) {
+        if (db.contains(e.getAddress().toString())) {
+                ban(e.getPlayer());                  //  Checks to see if the user who's logging in has an IP address that matches that of somebody who got
+        }                                                       //  banned for hacking, then ban that player for having a compromised account.
+}
+#
